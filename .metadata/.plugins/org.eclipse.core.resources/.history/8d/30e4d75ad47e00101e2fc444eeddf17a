@@ -1,0 +1,49 @@
+package dates;
+
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		  // Data atual
+        LocalDate dataHoje = LocalDate.now();
+        System.out.println("Data de hoje: " + dataHoje);
+
+        // Data e hora atual
+        LocalDateTime agora = LocalDateTime.now();
+        System.out.println("Data e hora atual: " + agora);
+
+        // Instante global (sempre UTC)
+        Instant instante = Instant.now();
+        System.out.println("Instante UTC: " + instante);
+
+        // Pegando horário do PC (ZoneId default)
+        ZoneId zonaPC = ZoneId.systemDefault();
+        System.out.println("ZoneId do PC: " + zonaPC);
+
+        ZonedDateTime dataHoraPC = agora.atZone(zonaPC);
+        System.out.println("Data/hora do PC com fuso: " + dataHoraPC);
+
+        // Criando datas específicas
+        LocalDate natal = LocalDate.of(2025, 12, 25);
+        System.out.println("Natal: " + natal);
+
+        // Formatando data
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String formatado = agora.format(fmt);
+        System.out.println("Data/hora formatada: " + formatado);
+
+        // Convertendo texto em data
+        LocalDate dataConvertida = LocalDate.parse("21/08/2025", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        System.out.println("Data convertida: " + dataConvertida);
+
+        // Cálculos com datas
+        LocalDate daquiUmaSemana = dataHoje.plusDays(7);
+        LocalDate semanaPassada = dataHoje.minusWeeks(1);
+        System.out.println("Daqui 7 dias: " + daquiUmaSemana);
+        System.out.println("Há 1 semana: " + semanaPassada);
+	}
+
+}

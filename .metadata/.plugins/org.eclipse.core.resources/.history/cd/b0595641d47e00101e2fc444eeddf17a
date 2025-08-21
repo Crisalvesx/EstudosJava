@@ -1,0 +1,159 @@
+package dates;
+
+import java.time.*; // LocalDate, LocalTime, LocalDateTime, ZonedDateTime, Instant, Period, Duration, ZoneId, ZoneOffset…
+import java.time.format.DateTimeFormatter; // Formatadores (String <-> datas)
+import java.time.temporal.ChronoField; // Acesso alternativo por campos (YEAR, MONTH_OF_YEAR, etc.)
+import java.util.Locale; // Locale para meses/dias em PT-BR
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Locale brasil = new Locale("pt", "BR");
+
+		// =========================================================
+		// 1) LocalDate -> somente DATA (ano, mês, dia) — sem fuso
+		// =========================================================
+		LocalDate hoje = LocalDate.now();
+		LocalDate dataEspecifica = LocalDate.of(2025, 8, 21);
+
+		// Getters mais comuns (NOMES CORRETOS!)
+		int dia = hoje.getDayOfMonth(); // 1..28/29/30/31
+		int mesNumero = hoje.getMonthValue(); // 1..12
+		Month mesEnum = hoje.getMonth(); // Enum Month (JANUARY, FEBRUARY, …)
+		DayOfWeek diaSemana = hoje.getDayOfWeek(); // Enum DayOfWeek (MONDAY, …)
+		int ano = hoje.getYear();
+
+		// Acesso alternativo via ChronoField (mesmo valor dos getters acima):
+		int anoViaCampo = hoje.get(ChronoField.YEAR);
+
+		// Propriedades úteis:
+		int diasNoMes = hoje.lengthOfMonth();
+		boolean bissexto = hoje.isLeapYear();
+
+		System.out.println("Hoje (ISO): " + hoje);
+		System.out.printf("Dia=%d | Mês=%d (%s) | DiaSemana=%s | Ano=%d%n", dia, mesNumero, mesEnum, diaSemana, ano);
+		System.out.println("Ano via ChronoField.YEAR: " + anoViaCampo);
+		System.out.println("Dias no mês atual: " + diasNoMes);
+		System.out.println("Ano bissexto? " + bissexto);
+
+		// Transformações comuns (imutáveis — retornam NOVOS objetos):
+		LocalDate daqui7 = hoje.plusDays(7);
+		LocalDate mesPassado = hoje.minusMonths(1);
+		LocalDate primeiroDiaDoMes = hoje.withDayOfMonth(1);
+		LocalDate natal = hoje.withMonth(12).withDayOfMonth(25);
+
+		System.out.println("Daqui 7 dias: " + daqui7);
+		System.out.println("Há 1 mês: " + mesPassado);
+		System.out.println("Primeiro dia deste mês: " + primeiroDiaDoMes);
+		System.out.println("Natal (mesmo ano de 'hoje'): " + natal);
+		System.out.println("Hoje é antes do Natal? " + hoje.isBefore(natal));
+		System.out.println("Hoje é depois do Natal? " + hoje.isAfter(natal));
+		System.out.println("Hoje é igual ao Natal? " + hoje.isEqual(natal));
+
+		// =========================================================
+		// 2) LocalTime -> somente HORA (hora, minuto, segundo, nanos)
+		// =========================================================
+		LocalTime agoraHora = LocalTime.now();
+		int hora = agoraHora.getHour();
+		int minuto = agoraHora.getMinute();
+		int segundo = agoraHora.getSecond();
+		int nanos = agoraHora.getNano();
+
+		System.out.printf("Hora atual: %02d:%02d:%02d (nanos=%d)%n", hora, minuto, segundo, nanos);
+
+		// =========================================================
+		// 3) LocalDateTime -> DATA + HORA (sem fuso)
+		// =========================================================
+		LocalDateTime agora = LocalDateTime.now();
+		LocalDateTime exemploDT = LocalDateTime.of(2025, 12, 25, 10, 45);
+
+		LocalDateTime daqui2h = agora.plusHours(2);
+		LocalDateTime arredondadoPraHora = agora.withMinute(0).withSecond(0).withNano(0);
+
+		System.out.println("Agora (LocalDateTime): " + agora);
+		System.out.println("Exemplo (25/12/2025 10:45): " + exemploDT);
+		System.out.println("Daqui 2 horas: " + daqui2h);
+		System.out.println("Arredondado pra hora cheia: " + arredondadoPraHora);
+
+		// Converter LocalDate -> LocalDateTime
+		LocalDateTime inicioDoDia = hoje.atStartOfDay();
+		System.out.println("Início do dia de hoje: " + inicioDoDia);
+
+		// =========================================================
+		// 4) Formatando e fazendo parse (String <-> data/hora)
+		// =========================================================
+		DateTimeFormatter fmtBRData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter fmtBRDataHoraExtenso = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy, HH:mm:ss",
+				brasil);
+
+		String hojeBR = hoje.format(fmtBRData); // "21/08/2025" por ex.
+		String agoraExtenso = agora.format(fmtBRDataHoraExtenso); // "21 de agosto de 2025, 18:30:05"
+
+		System.out.println("Hoje (BR): " + hojeBR);
+		System.out.println("Agora (por extenso): " + agoraExtenso);
+
+		// Parse (String -> objeto)
+		LocalDate parsedDate = LocalDate.parse("31/01/2026", fmtBRData);
+		LocalDateTime parsedDateTime = LocalDateTime.parse("05/02/2026 14:20:10",
+				DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+
+		System.out.println("Parse LocalDate: " + parsedDate);
+		System.out.println("Parse LocalDateTime: " + parsedDateTime);
+
+		// =========================================================
+		// 5) Fuso horário: ZoneId + ZonedDateTime
+		// =========================================================
+		ZoneId zonaSP = ZoneId.of("America/Sao_Paulo");
+		ZoneId zonaNY = ZoneId.of("America/New_York");
+		ZoneId zonaTokyo = ZoneId.of("Asia/Tokyo");
+
+		ZonedDateTime agoraSP = ZonedDateTime.now(zonaSP);
+		ZonedDateTime mesmoInstanteEmNY = agoraSP.withZoneSameInstant(zonaNY); // converte o INSTANTE
+		ZonedDateTime mesmoLocalEmNY = agoraSP.withZoneSameLocal(zonaNY); // mantém a “parede” local (cuidado!)
+
+		System.out.println("Agora em São Paulo: " + agoraSP);
+		System.out.println("Mesmo instante em Nova York: " + mesmoInstanteEmNY);
+		System.out.println("Mesma hora local em Nova York (sem ajustar instante): " + mesmoLocalEmNY);
+
+		// Converter LocalDateTime (sem fuso) -> ZonedDateTime (com fuso)
+		ZonedDateTime natalSP = exemploDT.atZone(zonaSP);
+		ZonedDateTime natalTokyo = natalSP.withZoneSameInstant(zonaTokyo);
+		System.out.println("Natal em SP: " + natalSP);
+		System.out.println("Natal (mesmo instante) em Tóquio: " + natalTokyo);
+
+		// Alguns ZoneIds disponíveis (lista é enorme; aqui só 5 primeiros ordenados)
+		System.out.println("Alguns ZoneIds disponíveis:");
+		ZoneId.getAvailableZoneIds().stream().sorted().limit(5).forEach(System.out::println);
+
+		// =========================================================
+		// 6) Period (datas) e Duration (tempos) — diferenças
+		// =========================================================
+		LocalDate inicio = LocalDate.of(2025, 1, 1);
+		Period periodo = Period.between(inicio, hoje); // anos/meses/dias de DATA
+		System.out.printf("Desde %s passaram %d anos, %d meses e %d dias%n", inicio, periodo.getYears(),
+				periodo.getMonths(), periodo.getDays());
+
+		Duration duracao = Duration.between(agora, daqui2h); // horas/minutos/segundos de DATA+HORA
+		System.out.println("Duração entre agora e daqui 2h (horas): " + duracao.toHours());
+
+		// =========================================================
+		// 7) Instant e Epoch (segundos desde 1970-01-01T00:00:00Z)
+		// =========================================================
+		Instant agoraUTC = Instant.now(); // sempre UTC
+		long epochSegundos = agoraUTC.getEpochSecond();
+		Instant reconstruido = Instant.ofEpochSecond(epochSegundos);
+		ZonedDateTime instantEmSP = reconstruido.atZone(zonaSP);
+
+		System.out.println("Instant agora (UTC): " + agoraUTC);
+		System.out.println("Epoch (segundos): " + epochSegundos);
+		System.out.println("Instant reconstruído em SP: " + instantEmSP);
+
+		// =========================================================
+		// 8) OffsetDateTime (data/hora com deslocamento fixo, ex: -03:00)
+		// =========================================================
+		OffsetDateTime agoraComOffset = OffsetDateTime.now(ZoneOffset.of("-03:00"));
+		System.out.println("OffsetDateTime (-03:00): " + agoraComOffset);
+	}
+
+}

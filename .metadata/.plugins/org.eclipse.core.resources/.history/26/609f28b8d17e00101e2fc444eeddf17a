@@ -1,0 +1,22 @@
+package matriz;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int m = sc.nextInt();
+		int n = sc.nextInt();
+		int[][] mat = new int[m][n];
+
+		for (int i = 0; i < mat.length; i++) { //ele ve so as colunas, como se fosse um vect, vai ser igual a m
+			for (int j = 0; j < mat[i].length; j++) { // e ve linha a linha, vai ser igual ao n
+				mat[i][j] = sc.nextInt();
+			}
+		}
+		System.out.println(mat[1][1]);
+	}
+
+}

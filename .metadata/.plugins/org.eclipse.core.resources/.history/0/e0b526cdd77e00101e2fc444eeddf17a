@@ -1,0 +1,5 @@
+package exComposicao;
+
+public enum WorkerLevel {
+
+}
