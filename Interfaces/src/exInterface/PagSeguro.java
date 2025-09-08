@@ -1,5 +1,7 @@
 package exInterface;
 
+import java.time.format.DateTimeFormatter;
+
 public class PagSeguro implements EmpresaPagamento {
 
 	@Override
@@ -12,9 +14,11 @@ public class PagSeguro implements EmpresaPagamento {
 			vect[i - 1] = result;
 		}
 		
+		DateTimeFormatter dft = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
 		for(int i = 0; i < parcelas; i++) {
 			
-			System.out.println(contrato.getData().plusMonths(i + 1) + " - " + String.format("%.2f", vect[i]));
+			System.out.println(contrato.getData().plusMonths(i + 1).format(dft) + " - " + String.format("%.2f", vect[i]));
 			
 		}
 	

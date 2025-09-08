@@ -35,7 +35,7 @@ public class Main {
 			System.out.println("Erro ao inserir os dados: Digite-os corretamente!");
 			
 		} catch (DateTimeParseException e) {
-			System.out.println("Erro ao inserir a data: Digite-a corretamente!777 (dd/MM/yyyy)");
+			System.out.println("Erro ao inserir a data: Digite-a corretamente! (dd/MM/yyyy)");
 			
 		}
 
