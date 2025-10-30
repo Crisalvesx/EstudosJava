@@ -1,4 +1,4 @@
-package Exmap;
+package exMap;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
