@@ -1,31 +1,46 @@
-0:06:20 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
-0:06:20 Microsoft.Shutdown.TabStripModel.CloseAllTabs
-0:06:20 Microsoft.Shutdown.TabStripModel.CloseTabs
-0:06:20 Microsoft.Shutdown.TabStripModel.CloseTabs_EdgeBeforeClosingAllTabs
-0:06:20 Microsoft.Shutdown.TabStripModel.InternalCloseTabsImpl
-0:06:20 Microsoft.Shutdown.TabStripModel.InternalCloseTabsImpl_TabClosable
-0:06:20 Microsoft.Shutdown.TabStripModel.InternalCloseTabsImpl_ClosingAll
-0:06:20 Microsoft.Shutdown.TabStripModel.CloseWebContentses
-0:06:20 Microsoft.Shutdown.TabStripModel.CloseWebContentses_FastShutdown
-0:06:20 Microsoft.Shutdown.TabStripModel.ShouldRunUnloadListenerBeforeClosing_false
-0:06:20 Tab4 RenderProcessGone
-0:06:20 Microsoft.UnloadController.ClearUnloadState
-0:06:20 Microsoft.Shutdown.TabStripModel.RunUnloadListenerBeforeClosing_false
-0:06:20 Microsoft.Shutdown.TabStripModel.InternalCloseTabsImpl_ClosedAll
-0:06:20 Microsoft.Shutdown.TabStripModel.SendDetachWebContentsNotifications
-0:06:20 Microsoft.UnloadController.ClearUnloadState
-0:06:20 Browser4 Close Tab4 at 0
-0:06:20 Tab4 WebContentsDestroyed
-0:06:20 Microsoft.UnloadController.TabStripEmpty
-0:06:20 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
-0:06:20 Microsoft.UnloadController.HasCompletedUnloadProcessing_True
-0:06:20 Microsoft.Shutdown.OnWindowClosing
-0:06:20 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
-0:06:20 Microsoft.UnloadController.HasCompletedUnloadProcessing_True
-0:06:20 Microsoft.Shutdown.OnWindowClosingPostClearBrowsingData_NoBrowsingDataCleared
-0:06:20 Widget Closed: BrowserFrame
-0:06:20 Microsoft.UnloadController.HasCompletedUnloadProcessing_True
-0:06:20 Microsoft.Shutdown.OnWindowClosing
-0:06:20 Microsoft.Shutdown.OnWindowClosing_DeleteScheduled
-0:06:20 Microsoft.Browser_Removed
-0:12:19 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp
+0:47:32 Tab38 StartNav188 #typed
+0:47:32 Tab38 FinishNav188
+0:47:32 Tab38 PageLoad
+0:47:32 Tab38 StartNav189 #typed
+0:47:32 Tab38 FinishNav189
+0:47:33 Tab38 PageLoad
+0:47:34 Tab38 StartNav190 #typed
+0:47:34 Tab38 FinishNav190
+0:47:34 Tab38 PageLoad
+0:47:39 Tab38 StartNav191 #typed
+0:47:39 Tab38 FinishNav191
+0:47:39 Tab38 PageLoad
+0:47:41 Tab38 StartNav192 #typed
+0:47:41 Tab38 FinishNav192
+0:47:41 Tab38 PageLoad
+0:47:44 Tab38 StartNav193 #typed
+0:47:44 Tab38 FinishNav193
+0:47:44 Tab38 PageLoad
+0:47:46 Tab38 StartNav194 #typed
+0:47:46 Tab38 FinishNav194
+0:47:46 Tab38 PageLoad
+0:47:46 Tab38 StartNav195 #typed
+0:47:46 Tab38 FinishNav195
+0:47:46 Tab38 PageLoad
+0:52:45 Tab38 StartNav196 #typed
+0:52:45 Tab38 FinishNav196
+0:52:45 Tab38 PageLoad
+0:52:47 Tab38 StartNav197 #typed
+0:52:47 Tab38 FinishNav197
+0:52:47 Tab38 PageLoad
+0:52:49 Tab38 StartNav198 #typed
+0:52:49 Tab38 FinishNav198
+0:52:49 Tab38 PageLoad
+0:52:51 Tab38 StartNav199 #typed
+0:52:51 Tab38 FinishNav199
+0:52:51 Tab38 PageLoad
+0:52:56 Tab38 StartNav200 #typed
+0:52:56 Tab38 FinishNav200
+0:52:56 Tab38 PageLoad
+0:52:57 Tab38 StartNav201 #typed
+0:52:57 Tab38 FinishNav201
+0:52:57 Tab38 PageLoad
+0:53:26 Tab38 StartNav202 #typed
+0:53:26 Tab38 FinishNav202
+0:53:26 Tab38 PageLoad
+0:53:36 Microsoft.UnloadController.IsUnclosableApp_IsNotWebApp

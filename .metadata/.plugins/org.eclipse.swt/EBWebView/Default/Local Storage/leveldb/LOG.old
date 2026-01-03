@@ -1,3 +1,2 @@
-2025/10/06-20:55:49.457 4af4 Reusing MANIFEST C:\Users\cnlun\OneDrive\Documentos\EstudosJava\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2025/10/06-20:55:49.532 4af4 Recovering log #3
-2025/10/06-20:55:49.536 4af4 Reusing old log C:\Users\cnlun\OneDrive\Documentos\EstudosJava\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 
+2025/12/29-19:32:38.039 d7c Creating DB C:\Users\cnlun\OneDrive\Documentos\EstudosJava\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb since it was missing.
+2025/12/29-19:32:38.980 d7c Reusing MANIFEST C:\Users\cnlun\OneDrive\Documentos\EstudosJava\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
